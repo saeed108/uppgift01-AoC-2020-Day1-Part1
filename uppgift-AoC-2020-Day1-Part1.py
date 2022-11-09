@@ -1,19 +1,23 @@
 # Read in the input file
-file = open('inmatning01.txt')
-test_inmatning = file.read()
-file.close()
+with open('inmatning01.txt') as x:
+    lines = x.readlines()
 
-# Split the input into separate lines
-test_inmatning = test_inmatning.splitlines()
+#Creating a variable, convert list of str to list of intand removes any leading and trailing
+numbers =  [int(line.strip()) for line in lines]
+larg = -1
 
-# Convert list of str to list of int
-data = []
-for elem in test_inmatning:
-    data.append(int(elem))
-
+#Creating LOOPS (for) and Conditions
+for i in range(len(numbers)-1):
+    for l in range(i+1, len(numbers)):
+        number1 = numbers[i]
+        number2 = numbers[l]
+        
 # Count the increases and print the answer
-result = 0
-for idx in range(1, len(data)):
-    if data[idx] > data[idx-1]:
-        result = result + 1
-print(result) 
+        if number1+number2 ==2020:
+            equipoise = number1 * number2
+       
+            if  equipoise > larg:
+             larg =  equipoise
+
+#Print the resualt
+print(larg)
